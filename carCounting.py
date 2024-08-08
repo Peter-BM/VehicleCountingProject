@@ -9,11 +9,11 @@ cap = cv2.VideoCapture("/home/meneghini_/Desktop/faculdade/TCC/TCC1/imagensEVide
 assert cap.isOpened(), "Error reading video file"
 w, h, fps = (int(cap.get(x)) for x in (cv2.CAP_PROP_FRAME_WIDTH, cv2.CAP_PROP_FRAME_HEIGHT, cv2.CAP_PROP_FPS))
 
-line_points = [(20, 400), (1080, 400)]  # line or region points
+line_points = [(300, 400), (1150, 400)]  # line or region points
 classes_to_count = [0, 2]  # person and car classes for count
 
 # Video writer
-video_writer = cv2.VideoWriter("object_counting_output.avi", cv2.VideoWriter_fourcc(*"mp4v"), fps, (w, h))
+video_writer = cv2.VideoWriter("RuaEscuraProcessado.mp4", cv2.VideoWriter_fourcc(*"mp4v"), fps, (w, h))
 
 # Init Object Counter
 counter = solutions.ObjectCounter(
@@ -33,6 +33,12 @@ while cap.isOpened():
 
     im0 = counter.start_counting(im0, tracks)
     video_writer.write(im0)
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+# Informações do vídeo:
+print(f'\n\nWidth: {w}\nHeight: {h}\nFPS: {fps}')
 
 cap.release()
 video_writer.release()
