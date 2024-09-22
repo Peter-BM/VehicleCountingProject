@@ -2,25 +2,25 @@ import cv2
 
 from ultralytics import YOLO, solutions
 
-model = YOLO("yolov8n.pt")
+model = YOLO("yolov8s.pt")
 model.export(format="openvino")  # creates 'yolov8n_openvino_model/'
-ov_model = YOLO("yolov8n_openvino_model/")
-cap = cv2.VideoCapture("/home/meneghini_/Desktop/faculdade/TCC/TCC1/imagensEVideos/RuaEscura.mp4")
+ov_model = YOLO("yolov8s_openvino_model/")
+cap = cv2.VideoCapture("/home/meneghini_/Desktop/faculdade/TCC/TCC1/imagensEVideos/RuaDia.mp4")
 assert cap.isOpened(), "Error reading video file"
 w, h, fps = (int(cap.get(x)) for x in (cv2.CAP_PROP_FRAME_WIDTH, cv2.CAP_PROP_FRAME_HEIGHT, cv2.CAP_PROP_FPS))
 
-line_points = [(300, 400), (1150, 400)]  # line or region points
-classes_to_count = [0, 2]  # person and car classes for count
+line_points = [(100, 550), (1300, 550)]  # line or region points
+classes_to_count = [2, 3, 5, 7]  # Car, Motorcycles, buses, trucks
 
 # Video writer
-video_writer = cv2.VideoWriter("RuaEscuraProcessado.mp4", cv2.VideoWriter_fourcc(*"mp4v"), fps, (w, h))
+video_writer = cv2.VideoWriter("RuaDiaYs.mp4", cv2.VideoWriter_fourcc(*"mp4v"), fps, (w, h))
 
 # Init Object Counter
 counter = solutions.ObjectCounter(
     view_img=True,
     reg_pts=line_points,
     names=model.names,
-    draw_tracks=True,
+    draw_tracks=False,
     line_thickness=2,
 )
 
