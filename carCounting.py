@@ -13,7 +13,7 @@ line_points = [(100, 550), (1300, 550)]  # line or region points
 classes_to_count = [2, 3, 5, 7]  # Car, Motorcycles, buses, trucks
 
 # Video writer
-video_writer = cv2.VideoWriter("RuaDiaYs.mp4", cv2.VideoWriter_fourcc(*"mp4v"), fps, (w, h))
+# video_writer = cv2.VideoWriter("RuaDiaYs.mp4", cv2.VideoWriter_fourcc(*"mp4v"), fps, (w, h))
 
 # Init Object Counter
 counter = solutions.ObjectCounter(
@@ -32,7 +32,7 @@ while cap.isOpened():
     tracks = ov_model.track(im0, persist=True, show=False, classes=classes_to_count)
 
     im0 = counter.start_counting(im0, tracks)
-    video_writer.write(im0)
+    # video_writer.write(im0)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
@@ -41,5 +41,5 @@ while cap.isOpened():
 print(f'\n\nWidth: {w}\nHeight: {h}\nFPS: {fps}')
 
 cap.release()
-video_writer.release()
+# video_writer.release()
 cv2.destroyAllWindows()
