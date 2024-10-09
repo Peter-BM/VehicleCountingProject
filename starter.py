@@ -3,12 +3,12 @@ import cv2
 from ultralytics import YOLO, solutions
 import tempfile
 
-
 def main():
     st.title("Gerenciamento de Volume de Tráfego")
 
-    # Load the OpenVINO model
-    ov_model = YOLO("yolov8s_openvino_model/")
+    model = YOLO("yolov8s.pt")
+    model.export(format="openvino", batch=1)
+    ov_model = YOLO("yolov8s_openvino_model/", task="detect", verbose=True)
 
     with st.sidebar:
         st.title('Configurações de detecção de objetos')
@@ -67,7 +67,7 @@ def main():
         progress_bar = st.progress(0)
 
         with st.spinner('Processando o vídeo...'):
-            placeholder = st.empty()  # Cria um placeholder fazio
+            placeholder = st.empty()
             while cap.isOpened():
                 success, im0 = cap.read()
                 if not success:
@@ -76,7 +76,7 @@ def main():
                 tracks = ov_model.track(im0, persist=True, show=False, classes=classes_to_count)
                 im0 = counter.start_counting(im0, tracks)
 
-                placeholder.image(im0, channels="BGR")  # Update the placeholder with the new frame
+                placeholder.image(im0, channels="BGR")
 
                 frame_number += 1
                 if total_frames > 0:
@@ -85,10 +85,8 @@ def main():
                     progress_bar.progress(1)
 
         cap.release()
-
         cv2.destroyAllWindows()
 
-        # Display counts and other info
         col1, col2, col3 = st.columns(3)
 
         with col1:

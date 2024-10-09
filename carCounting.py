@@ -3,8 +3,8 @@ import cv2
 from ultralytics import YOLO, solutions
 
 model = YOLO("yolov8s.pt")
-model.export(format="openvino")  # creates 'yolov8n_openvino_model/'
-ov_model = YOLO("yolov8s_openvino_model/")
+model.export(format="openvino", batch=1)  # creates 'yolov8n_openvino_model/'
+ov_model = YOLO("yolov8s_openvino_model/", task="detect")
 cap = cv2.VideoCapture("/home/meneghini_/Desktop/faculdade/TCC/TCC1/imagensEVideos/RuaDia.mp4")
 assert cap.isOpened(), "Error reading video file"
 w, h, fps = (int(cap.get(x)) for x in (cv2.CAP_PROP_FRAME_WIDTH, cv2.CAP_PROP_FRAME_HEIGHT, cv2.CAP_PROP_FPS))

@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="980df0b3-602d-4368-82e8-5812c5939d02" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/carCounting.py" beforeDir="false" afterPath="$PROJECT_DIR$/carCounting.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/starter.py" beforeDir="false" afterPath="$PROJECT_DIR$/starter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yolov8n_openvino_model/metadata.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/yolov8n_openvino_model/metadata.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yolov8n_openvino_model/yolov8n.xml" beforeDir="false" afterPath="$PROJECT_DIR$/yolov8n_openvino_model/yolov8n.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yolov8s_openvino_model/metadata.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/yolov8s_openvino_model/metadata.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,6 +33,7 @@
   &quot;keyToString&quot;: {
     &quot;Python.carCounting.executor&quot;: &quot;Run&quot;,
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.starter.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/meneghini_/PycharmProjects/yolov8CrowdManagement&quot;,
